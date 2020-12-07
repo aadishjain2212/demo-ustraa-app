@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BaseAddress } from "./Environment/Environment";
+import CategoriesTabs from "./Categories/CategoriesTabs"
 
 function App() {
+  const [state, setState] = React.useState({});
+  React.useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `${BaseAddress}/homemenucategories/v1.0.1?device_type=mob`
+      );
+      response.json().then(response => {
+        setState(response);
+      });
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <CategoriesTabs data={state} />
+    </React.Fragment>
   );
 }
 
