@@ -18,7 +18,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <CategoriesTabs data={state} />
       <a href='http://localhost:3000/?tenantId=5B0A6jM6WIpV+2nU2/yeTsmgrUMxT40O4BPWNLmJDcbce724wFstKg==&widgetId=f6AOYJe46RAPuXZG7memWQ==&gaId=4454avc'>redirect ti bookit</a>
     </React.Fragment>
   );
